@@ -1,0 +1,30 @@
+<ion-view view-title="Nova Mensagem">
+    <ion-content>
+
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label label-login">
+                    Para
+                </div>
+                <select ng-model="novaMensagem.para">
+                    <option ng-repeat="user in usuarios" value="{{user.id}}">{{user.name}}</option>
+                </select>
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label label-login">Mensagem</span>
+            </label>
+            <label class="item item-input">
+                <textarea class="textarea" placeholder="|" ng-model="novaMensagem.mensagem"></textarea>
+            </label>
+        </div>
+    </ion-content>
+
+    <div class="tabs tabs-icon-left">
+        <a class="tab-item" ng-click="nova(novaMensagem)">
+            <i class="icon ion-android-send"></i>
+            Enviar
+        </a>
+    </div>
+</ion-view>
+
