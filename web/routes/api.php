@@ -18,13 +18,13 @@ use Illuminate\Http\Request;
 |
 */
 
- Route::get('user', function (Request $request) {
-     return $request->user();
- })->middleware('auth:api');
+Route::get('user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:api');
 
 Route::get('ofertas', function () {
     $ofertas = App\Oferta::all();
-    foreach($ofertas as $oferta){
+    foreach ($ofertas as $oferta) {
         $oferta->imagem = asset($oferta->imagem);
     }
     return response()->json($ofertas);

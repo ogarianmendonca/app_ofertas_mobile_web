@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class ApiUsuarioController
+ * @package App\Http\Controllers
+ */
 class ApiUsuarioController extends Controller
 {
-
+    /**
+     * @param $email
+     * @param $password
+     * @return array
+     */
     public function getUsuario($email, $password)
     {
         $users = User::where('email', $email)->get();
@@ -22,6 +30,9 @@ class ApiUsuarioController extends Controller
         }
     }
 
+    /**
+     * @return User[]|Collection
+     */
     public function usuarios()
     {
         $usuarios = User::all();
@@ -32,5 +43,4 @@ class ApiUsuarioController extends Controller
 
         return $usuarios;
     }
-
 }

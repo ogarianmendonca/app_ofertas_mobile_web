@@ -55,7 +55,7 @@
                         @else
                             <li><a href="{{ route('ofertas.index') }}">Ofertas</a></li>
                             <li><a href="{{ route('mensagens.index') }}">Mensagens</a></li>
-                            <li><a href="{{ route('usuarios.index') }}">Usuário</a></li>
+                            <li><a href="{{ route('usuarios.index') }}">Usuários</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     <img height="30" src="{{ asset(Auth::user()->imagem) }}" style="border-radius: 50%;"/>

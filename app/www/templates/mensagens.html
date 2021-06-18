@@ -1,66 +1,65 @@
 <ion-view view-title="Mensagens">
-    <ion-content>
-        <ion-list>
-            <ion-item ng-repeat="msg in mensagens">
-                <div class="item-avatar" ng-if="usuario[0]['id'] != msg['de']" ng-click="visualizar(msg['id'])">
-                    <img data-ng-src="{{usuario[0]['imagem']}}" alt="">
-                    <h2 class="label-login">Para: Você</h2>
-                    <p>Data Envio: {{msg['data']}}</p>
-                </div>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="msg in mensagens">
+        <div class="item-avatar" ng-if="usuario[0]['id'] != msg['de']" ng-click="visualizar(msg['id'])">
+          <img data-ng-src="{{usuario[0]['imagem']}}" alt="">
+          <h2 class="label-login">Para: Você</h2>
+          <p>Data Envio: {{msg['data']}}</p>
+        </div>
 
-                <div class="item-avatar" ng-if="usuario[0]['id'] == msg['de']" ng-click="visualizar(msg['id'])">
-                    <img data-ng-src="{{msg['imagem']}}" alt="">
-                    <h2 class="label-login">Para: {{msg['para']}}</h2>
-                    <p>Data Envio: {{msg['data']}}</p>
-                </div>
+        <div class="item-avatar" ng-if="usuario[0]['id'] == msg['de']" ng-click="visualizar(msg['id'])">
+          <img data-ng-src="{{msg['imagem']}}" alt="">
+          <h2 class="label-login">Para: {{msg['para']}}</h2>
+          <p>Data Envio: {{msg['data']}}</p>
+        </div>
 
-                <ion-option-button class="button-assertive" ng-click="excluir(msg['id'])">
-                    Excluir
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
+        <ion-option-button class="button-assertive" ng-click="excluir(msg['id'])">
+          Excluir
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
 
-        <!--Modal Visualizar Mensagem-->
-        <script id="modal-visualizar-mensagem.html" type="text/ng-template">
-            <ion-modal-view>
-                <ion-header-bar class="bar-calm">
-                    <a class="button icon-left ion-chevron-left button-calm" ng-click="fechaModal()"></a>
-                    <h1 class="title" ng-if="usuario[0]['id'] != visualizarMensagem.mensagens[0]['de']">Enviada para:
-                        Você</h1>
-                    <h1 class="title" ng-if="usuario[0]['id'] == visualizarMensagem.mensagens[0]['de']">Enviada para:
-                        {{visualizarMensagem.mensagens[0]['para']}}</h1>
-                </ion-header-bar>
-                <ion-content>
-                    <div class="list card">
-                        <div class="item item-avatar">
-                            <img data-ng-src="{{visualizarMensagem.mensagens[0]['imagem']}}">
-                            <h2 ng-if="usuario[0]['id'] != visualizarMensagem.mensagens[0]['de']">Enviada para:
-                                Você</h2>
-                            <h2 ng-if="usuario[0]['id'] == visualizarMensagem.mensagens[0]['de']">Enviada para:
-                                {{visualizarMensagem.mensagens[0]['para']}}</h2>
-                        </div>
+    <!--Modal Visualizar Mensagem-->
+    <script id="modal-visualizar-mensagem.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar class="bar-calm">
+          <a class="button icon-left ion-chevron-left button-calm" ng-click="fechaModal()"></a>
+          <h1 class="title" ng-if="usuario[0]['id'] != visualizarMensagem.mensagens[0]['de']">Enviada para:
+            Você</h1>
+          <h1 class="title" ng-if="usuario[0]['id'] == visualizarMensagem.mensagens[0]['de']">Enviada para:
+            {{visualizarMensagem.mensagens[0]['para']}}</h1>
+        </ion-header-bar>
+        <ion-content>
+          <div class="list card">
+            <div class="item item-avatar">
+              <img data-ng-src="{{visualizarMensagem.mensagens[0]['imagem']}}">
+              <h2 ng-if="usuario[0]['id'] != visualizarMensagem.mensagens[0]['de']">Enviada para:
+                Você</h2>
+              <h2 ng-if="usuario[0]['id'] == visualizarMensagem.mensagens[0]['de']">Enviada para:
+                {{visualizarMensagem.mensagens[0]['para']}}</h2>
+            </div>
 
-                        <div class="item item-body">
-                            <h4>{{visualizarMensagem.mensagens[0]['mensagem']}}</h4>
-                            <h4>{{visualizarMensagem.mensagens[0]['data']}}</h4>
-                        </div>
-                    </div>
-                </ion-content>
-                <div class="tabs tabs-icon-top">
-                    <a class="tab-item" ng-click="irNovaMensagem()">
-                        <i class="icon ion-email"></i>
-                        Enviar Mensagem
-                    </a>
-                </div>
-            </ion-modal-view>
-        </script>
-
-    </ion-content>
-
-    <div class="tabs tabs-icon-top">
-        <a class="tab-item" href="#/app/nova-mensagem">
+            <div class="item item-body">
+              <h4>{{visualizarMensagem.mensagens[0]['mensagem']}}</h4>
+              <h4>{{visualizarMensagem.mensagens[0]['data']}}</h4>
+            </div>
+          </div>
+        </ion-content>
+        <div class="tabs tabs-icon-top">
+          <a class="tab-item" ng-click="irNovaMensagem()">
             <i class="icon ion-email"></i>
-            Nova Mensagem
-        </a>
-    </div>
+            Enviar Mensagem
+          </a>
+        </div>
+      </ion-modal-view>
+    </script>
+  </ion-content>
+
+  <div class="tabs tabs-icon-top">
+    <a class="tab-item" href="#/app/nova-mensagem">
+      <i class="icon ion-email"></i>
+      Nova Mensagem
+    </a>
+  </div>
 </ion-view>

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $user->name = "Admin";
         $user->email = "admin@email.com";
         $user->password = bcrypt("123456");
+        $user->imagem = "img/img_931.jpeg";
         $user->save();
 
         $oferta = [
@@ -30,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'validade' => '2018-10-30',
             'valor' => 19.90,
             'valor_formatado' => 'R$ 19,90',
-            'imagem' => 'teste.png'
+            'imagem' => 'img/img_730.jpeg'
         ];
         Oferta::create($oferta);
     }

@@ -16,8 +16,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
-Route::group(['middleware' => 'auth'], function(){
-
+Route::group(['middleware' => 'auth'], function () {
     Route::resource('ofertas', 'OfertaController');
 
     Route::resource('usuarios', 'UsuarioController');
@@ -27,5 +26,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('mensagens/visualizar/{id}', 'MensagemController@visualizar')->name('mensagens.visualizar');
 
     Route::post('mensagens/responder', 'MensagemController@responder')->name('mensagens.responder');
-
 });

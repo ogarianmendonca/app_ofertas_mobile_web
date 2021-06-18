@@ -15,7 +15,7 @@ class CreateMensagensTable extends Migration
     {
         Schema::create('mensagens', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('msg_pai');
+            $table->integer('msg_pai')->nullable();
             $table->integer('de');
             $table->integer('para');
             $table->longText('mensagem');

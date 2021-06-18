@@ -1,19 +1,17 @@
 <ion-view view-title="Favoritos">
-    <ion-content>
-
-        <ion-list>
-            <ion-item ng-repeat="favorito in favoritos">
-                <div class="item-avatar">
-                    <img data-ng-src="{{favorito.imagem}}" alt="">
-                    <h2 class="label-login">{{favorito.titulo}} - {{favorito.valor_formatado}}</h2>
-                    <p>{{favorito.descricao}}</p>
-                    <p>Até: {{favorito.validade | date:"dd/MM/yyyy"}}</p>
-                </div>
-                <ion-option-button class="button-assertive" ng-click="removeFavoritos(favorito)">
-                    Remover
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
-
-    </ion-content>
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="favorito in favoritos">
+        <div class="item-avatar">
+          <img data-ng-src="{{favorito.imagem}}" alt="">
+          <h2 class="label-login">{{favorito.titulo}} - {{favorito.valor_formatado}}</h2>
+          <p>{{favorito.descricao}}</p>
+          <p>Até: {{favorito.validade | date:"dd/MM/yyyy"}}</p>
+        </div>
+        <ion-option-button class="button-assertive" ng-click="removeFavoritos(favorito)">
+          Remover
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

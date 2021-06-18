@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\User;
 use App\Mensagem;
+use Illuminate\View\View;
 
+/**
+ * Class MensagemController
+ * @package App\Http\Controllers
+ */
 class MensagemController extends Controller
 {
-
+    /**
+     * @return Factory|Application|View
+     */
     public function index()
     {
         $mensagens = Mensagem::all();
@@ -17,6 +27,9 @@ class MensagemController extends Controller
         return view('mensagens.index', compact('mensagens', 'usuario'));
     }
 
+    /**
+     * @return Factory|Application|View
+     */
     public function create()
     {
         $para = User::all();
@@ -24,6 +37,10 @@ class MensagemController extends Controller
         return view('mensagens.create', compact('para'));
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function store(Request $request)
     {
         $de = \Auth::user();
@@ -39,6 +56,10 @@ class MensagemController extends Controller
         return redirect()->route('mensagens.index');
     }
 
+    /**
+     * @param $id
+     * @return Factory|Application|View
+     */
     public function visualizar($id)
     {
         $msg = Mensagem::find($id);
@@ -50,6 +71,10 @@ class MensagemController extends Controller
         return view('mensagens.visualizar', compact('msg', 'de', 'msg_pai'));
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function responder(Request $request)
     {
         $mensagem = $request->all();
@@ -61,17 +86,23 @@ class MensagemController extends Controller
         return redirect()->route('mensagens.index');
     }
 
+    /**
+     * @param $id
+     */
     public function lida($id)
     {
         $mensagem['lida'] = true;
         Mensagem::find($id)->update($mensagem);
     }
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function destroy($id)
     {
         Mensagem::find($id)->delete();
         \Session::flash('flash_message', 'Mensagem excluída com sucesso');
         return redirect()->route('mensagens.index');
     }
-
 }

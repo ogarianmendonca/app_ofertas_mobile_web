@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
+/**
+ * Class UsuarioController
+ * @package App\Http\Controllers
+ */
 class UsuarioController extends Controller
 {
+    /**
+     * @return Factory|Application|View
+     */
     public function index()
     {
         $users = User::all();
@@ -14,11 +25,18 @@ class UsuarioController extends Controller
         return view('usuarios.index', compact('users'));
     }
 
+    /**
+     * @return Factory|Application|View
+     */
     public function create()
     {
         return view('usuarios.create');
     }
 
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function store(Request $request)
     {
         $dados = $request->all();
@@ -44,6 +62,10 @@ class UsuarioController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return Factory|Application|View
+     */
     public function edit($id)
     {
         $user = User::find($id);
@@ -51,6 +73,11 @@ class UsuarioController extends Controller
         return view('usuarios.edit', compact('user'));
     }
 
+    /**
+     * @param Request $request
+     * @param $id
+     * @return RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $dados = $request->all();
@@ -75,6 +102,10 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function destroy($id)
     {
         User::find($id)->delete();

@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\User;
 use App\Mensagem;
-use Illuminate\Support\Facades\DB;
 
+/**
+ * Class ApiMensagemController
+ * @package App\Http\Controllers
+ */
 class ApiMensagemController extends Controller
 {
-
+    /**
+     * @param $id
+     * @return array
+     */
     public function mensagem($id)
     {
         $mensagens = Mensagem::join('users', 'users.id', '=', 'mensagens.para')
@@ -30,6 +34,10 @@ class ApiMensagemController extends Controller
         return ['mensagens' => $mensagens];
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function visualizar($id)
     {
         $mensagens = Mensagem::join('users', 'users.id', '=', 'mensagens.para')
@@ -49,6 +57,10 @@ class ApiMensagemController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return string[]
+     */
     public function novaMensagem(Request $request)
     {
         $mensagem = new Mensagem();
@@ -66,6 +78,10 @@ class ApiMensagemController extends Controller
         return ['result' => $result];
     }
 
+    /**
+     * @param $id
+     * @return string[]
+     */
     public function excluir($id)
     {
         Mensagem::find($id)->delete();
@@ -75,6 +91,10 @@ class ApiMensagemController extends Controller
         return ['result' => $result];
     }
 
+    /**
+     * @param $data
+     * @return string
+     */
     public function converteData($data)
     {
         list($ano, $mes, $diaHora) = explode('-', $data);
@@ -84,5 +104,4 @@ class ApiMensagemController extends Controller
 
         return $dataConvertida;
     }
-
 }
